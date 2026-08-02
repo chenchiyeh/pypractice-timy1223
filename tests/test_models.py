@@ -12,7 +12,7 @@ def test_vgg16_output_shape():
     """VGG16 在 CPU 上的 forward pass 輸出 shape 應符合預期"""
     model = VGG16()
     model.eval()
-    dummy_input = torch.randn(1, 3, 32, 32)
+    dummy_input = torch.randn(1, 3, 224, 224)
     with torch.no_grad():
         output = model(dummy_input)
     assert output.shape[0] == 1   # batch size
@@ -22,7 +22,7 @@ def test_vgg16_output_is_tensor():
     """VGG16 的輸出應為 torch.Tensor"""
     model = VGG16()
     model.eval()
-    dummy_input = torch.randn(2, 3, 32, 32)
+    dummy_input = torch.randn(2, 3, 224, 224)
     with torch.no_grad():
         output = model(dummy_input)
     assert isinstance(output, torch.Tensor)
